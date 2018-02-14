@@ -4,13 +4,16 @@
 
 {% block body %}
 
-    <H1>You are on chat page. {{ user_name }}</H1>
+    <h1>You are on chat page. {{ user_name }}</h1>
+    <div>
+        <button id="connect">Connect</button>
+    </div>
 
     <div id="chat_box"></div>
 
-    <div class="form-group">
+    <form onsubmit="return false;">
          <input type="text" class="form-control send_message" placeholder="Enter message: ">
-    </div>
+    </form>
 
     <button class="btn btn-primary send_message">Send</button>
 

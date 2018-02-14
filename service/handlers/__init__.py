@@ -7,7 +7,6 @@ class Router:
 
     auth = None
     chat = None
-    message = None
 
     def __init__(self, app):
         self.app = app
@@ -33,16 +32,5 @@ class Router:
         self.handlers.add(handler)
 
         self.chat = handler
-
-        return handler
-
-    def setup_message_handlers(self):
-        from .message import Handler
-
-        handler = Handler(self.app)
-
-        self.handlers.add(handler)
-
-        self.message = handler
 
         return handler

@@ -69,9 +69,7 @@ class Handler(
 
         return web.Response(
             status=web.HTTPSeeOther.status_code,
-            headers={
-                'Location': '/chat',
-            },
+            headers={'Location': '/chat'},
             content_type='text/html',
             charset='utf-8',
             reason=None,
@@ -123,9 +121,7 @@ class Handler(
 
         return web.Response(
             status=web.HTTPSeeOther.status_code,
-            headers={
-                'Location': '/chat',
-            },
+            headers={'Location': '/chat'},
             content_type='text/html',
             charset='utf-8',
             reason=None,

@@ -6,27 +6,6 @@ def setup_routes(
 ):
 
     app.router.add_route(
-        'POST',
-        '/message',
-        router.message.message,
-        name='api:message',
-    )
-
-    app.router.add_route(
-        'POST',
-        '/message/cached',
-        router.message.get_cached_messages,
-        name='api:cached_messages',
-    )
-
-    app.router.add_route(
-        'POST',
-        '/message/current',
-        router.message.get_current_messages,
-        name='api:current_messages',
-    )
-
-    app.router.add_route(
         'GET',
         '/',
         router.auth.index,
@@ -38,7 +17,7 @@ def setup_routes(
         '/signup',
         router.auth.signup_get,
         name='page:signup_get',
-    ),
+    )
 
     app.router.add_route(
         'POST',
@@ -71,6 +50,13 @@ def setup_routes(
     app.router.add_route(
         'GET',
         '/chat',
-        router.chat.chat,
+        router.chat.websocket_chat,
         name='page:chat',
+    )
+
+    app.router.add_route(
+        'GET',
+        '/chat/get_cached_messages',
+        router.chat.get_cached_messages,
+        name='page:get_cached_messages',
     )

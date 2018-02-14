@@ -42,6 +42,10 @@ class Server(
         logging.info('App initialized')
 
     def setup(self):
+        self.app['sockets'] = []
+
+        self.app.on_shutdown.append(self.on_shutdown)
+
         jinja2_env = Environment(
             loader=FileSystemLoader([TEMPLATES_ROOT, APP_ROOT]))
         self.app[JINJA2_ENVIRONMENT] = jinja2_env
@@ -60,7 +64,6 @@ class Server(
         self.router = Router(self.app)
         self.router.setup_index_handlers()
         self.router.setup_chat_handlers()
-        self.router.setup_message_handlers()
         setup_routes(self.app, self.router)
 
         self.app.middlewares.append(self.middleware)
@@ -119,3 +122,7 @@ class Server(
             self.loop.run_until_complete(self.app.cleanup())
             self.loop.close()
             logging.info('App was finished')
+
+    async def on_shutdown(self, app):
+        for ws in app['sockets']:
+            await ws.close()
