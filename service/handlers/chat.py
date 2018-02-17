@@ -3,14 +3,13 @@ import os
 from datetime import datetime as dt
 
 from aiohttp import web
+from aiohttp.web import WebSocketResponse, WSMsgType
 from aiohttp_security import authorized_userid
 
 from misc.handlers import TemplateHandler
 
 from . import BaseHandler
 from ..storages.users import Storage
-
-from aiohttp.web import (WebSocketResponse, WSMsgType)
 
 
 class Handler(
