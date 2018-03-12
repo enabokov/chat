@@ -1,13 +1,12 @@
 const path = require("path");
 const CopyPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
 function makeConfig({
   js: { input: jsInput, output: jsOutput, vendorOutput },
   css: { input: cssInput, output: cssOutput },
-  copy,
+  copy
 }) {
     return {
       entry: {
@@ -46,11 +45,6 @@ function makeConfig({
         ]
       },
       plugins: [
-        new UglifyJSPlugin({
-          parallel: true,
-          cache: true,
-        }),
-
         new webpack.ProvidePlugin({
           $: 'jquery',
           jQuery: 'jquery',
