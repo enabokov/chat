@@ -20,7 +20,7 @@
     "babel-core": "*",
     "babel-loader": "7.1.2",
     "babel-preset-env": "*",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "copy-webpack-plugin": "4.2.0",
     "css-loader": "0.28.7",
     "eslint": "4.10.0",
